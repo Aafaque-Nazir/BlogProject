@@ -24,7 +24,7 @@ export class AuthService{
             }
             
         } catch (error) {
-            throw
+            throw error
             
         }
     }

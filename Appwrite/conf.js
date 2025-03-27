@@ -13,7 +13,7 @@ export class Service{
         this.databases = new Databases(this.client)
         this.storage = new Storage(this.client)
     }
-    async CreatePost({title, slug,content , featuredImage, status , userId}){
+    async createPost({title, slug,content , featuredImage, status , userId}){
         try {
             return await this.databases.createDocument(
                 config.appwriteDatabaseId,
@@ -33,7 +33,7 @@ export class Service{
             
         }
 }
-    async UpdatePost(slug, {title,content , featuredImage, status}){
+    async updatePost(slug, {title,content , featuredImage, status}){
         try {
             return await this.databases.updateDocument(
                 config.appwriteDatabaseId,

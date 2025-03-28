@@ -111,7 +111,7 @@ export class Service{
             return false
         }
     }
-    getfilePreview(fileId){
+    getFilePreview(fileId){
         return this.storage.getFilePreview(
             config.appwriteStorageId,
             fileId

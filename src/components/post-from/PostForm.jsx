@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Input, RTE, Select } from "../exports";
-import appwriteService from "../../../Appwrite/conf";
+import appwriteService from "../../Appwrite/conf";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 

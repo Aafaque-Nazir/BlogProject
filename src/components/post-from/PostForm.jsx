@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useForm } from "react-hook-form";
-import { Button, Input, RTE, Select } from "../exports";
-import appwriteService from "../../Appwrite/conf";
+import { Button, Input, RTE, Select } from "../export";
+import appwriteService from "../../../Appwrite/conf";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -40,7 +40,18 @@ export default function PostForm({ post }) {
             if (file) {
                 const fileId = file.$id;
                 data.featuredImage = fileId;
-                const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id });
+if (!userData || !userData.$id) {
+    console.error("User ID is not available. Cannot create post.");
+    return;
+}
+if (!userData || !userData.$id) {
+    console.error("User ID is not available. Cannot create post.");
+    return;
+}
+const dbPost = await appwriteService.createPost({ ...data, userid: userData.$id });
+console.log("Post creation response:", dbPost);
+
+
  
                 if (dbPost) {
                     navigate(`/post/${dbPost.$id}`);

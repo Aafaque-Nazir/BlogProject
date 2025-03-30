@@ -1,9 +1,10 @@
 const config = {
-    appwriteUrl: String('import.meta.env.VITE_APPWRITE_URL'),
-    appwriteProjectId: String('import.meta.env.VITE_APPWRITE_PROJECT_ID'),
-    appwriteDatabaseId: String('import.meta.env.VITE_APPWRITE_DATABASE_ID'),
-    appwriteCollectionId: String('import.meta.env.VITE_APPWRITE_COLLECTION_ID'),
-    appwriteStorageId: String('import.meta.env.VITE_APPWRITE_STORAGE_ID'),
+    appwriteUrl: import.meta.env.VITE_APPWRITE_URL,
+    appwriteProjectId: import.meta.env.VITE_APPWRITE_PROJECT_ID,
+    appwriteDatabaseId: import.meta.env.VITE_APPWRITE_DATABASE_ID ,
+    appwriteCollectionId: import.meta.env.VITE_APPWRITE_COLLECTION_ID,
+    appwriteStorageId:import.meta.env.VITE_APPWRITE_STORAGE_ID,
+
         
 }
 

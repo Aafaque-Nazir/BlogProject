@@ -32,7 +32,8 @@ export class AuthService {
         try {
             return await this.account.createEmailPasswordSession(email, password);
         } catch (error) {
-            throw error;
+            console.error("Login failed:", error.message);
+    throw error;
         }
     }
 
@@ -40,18 +41,19 @@ export class AuthService {
         try {
             return await this.account.get();
         } catch (error) {
-            console.log("Appwrite serive :: getCurrentUser :: error", error);
+            console.error("Error fetching current user:", error.message);
+            return null;
         }
 
-        return null;
     }
+
 
     async logout() {
 
         try {
             await this.account.deleteSessions();
         } catch (error) {
-            console.log("Appwrite serive :: logout :: error", error);
+            console.error("Logout failed:", error.message);
         }
     }
 }

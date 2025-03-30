@@ -1,5 +1,5 @@
 import React from 'react'
-import appwriteService from '../services/appwrite'
+import appwriteService from '../../Appwrite/conf'
 import { Link } from 'react-router-dom'
 
 function PostCard({

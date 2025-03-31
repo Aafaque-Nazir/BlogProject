@@ -19,6 +19,12 @@ export default function PostForm({ post }) {
     const userData = useSelector((state) => state.auth.userData);
 
     const submit = async (data) => {
+        if (!userData || !userData.$id) {
+            alert("You must be logged in to create a post.");
+            navigate("/login"); // Redirect to login page
+            return;
+        }
+        console.log( userData , userData.$id);
         if (post) {
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
 
@@ -40,19 +46,8 @@ export default function PostForm({ post }) {
             if (file) {
                 const fileId = file.$id;
                 data.featuredImage = fileId;
-if (!userData || !userData.$id) {
-    console.error("User ID is not available. Cannot create post.");
-    return;
-}
-if (!userData || !userData.$id) {
-    console.error("User ID is not available. Cannot create post.");
-    return;
-}
-const dbPost = await appwriteService.createPost({ ...data, userid: userData.$id });
-console.log("Post creation response:", dbPost);
+                const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id });
 
-
- 
                 if (dbPost) {
                     navigate(`/post/${dbPost.$id}`);
                 }

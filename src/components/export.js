@@ -1,4 +1,4 @@
-import Header from "./Header";
+import HeaderWithHamburger from "./Header";
 import Footer from "./Footer";
 import Container from "./container/Container";
 import Logo from "./Logo";
@@ -14,7 +14,7 @@ import Select from "./Select";
 import  Button  from "./Button";
 
 
-export { Header,
+export { HeaderWithHamburger,
          Footer,
          Container,
           Logo,

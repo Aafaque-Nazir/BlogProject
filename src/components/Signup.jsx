@@ -31,7 +31,7 @@ function Signup() {
 
     return (
         <div className="flex  items-center justify-center min-h-screen bg-gradient-to-br from-indigo-900 via-gray-900 to-black p-10">
-            <div className="w-full max-w-md bg-gray-800/80 backdrop-blur-md rounded-xl p-8 shadow-xl border border-gray-700">
+            <div className="w-full max-w-md bg-gray-800/80 backdrop-blur-md rounded-xl p-12 shadow-xl border border-gray-700">
                 <div className="mb-6 flex justify-center">
                     <span className="inline-block w-full max-w-[100px]">
                         <Logo width="100%" />

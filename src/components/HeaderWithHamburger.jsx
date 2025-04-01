@@ -59,16 +59,18 @@ function HeaderWithHamburger() {
           </button>
 
           {/* Navigation Items */}
-          <ul className={`flex-col md:flex md:flex-row ${menuOpen ? 'flex' : 'hidden'} ml-auto space-y-4 md:space-y-0 md:space-x-4`}>
+          <ul
+            className={`flex-col md:flex md:flex-row ${menuOpen ? "flex" : "hidden"} space-y-4 md:space-y-0 md:space-x-4`}
+          >
             {navItems.map((item) =>
               item.active ? (
                 <li key={item.name}>
-                  <button
+                  <Link
+                    to={item.slug}
                     className="px-4 py-2 text-sm font-medium duration-200 hover:bg-indigo-700 hover:text-white rounded-full bg-indigo-500 text-gray-100"
-                    onClick={() => navigate(item.slug)}
                   >
                     {item.name}
-                  </button>
+                  </Link>
                 </li>
               ) : null
             )}

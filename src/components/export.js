@@ -1,8 +1,8 @@
-import HeaderWithHamburger from "./Header";
+import Header from "../components/header/Header";
 import Footer from "./Footer";
 import Container from "./container/Container";
 import Logo from "./Logo";
-import LogoutBtn from "./LogoutBtn";
+import LogoutBtn from "../components/header/LogoutBtn";
 import RTE from "./RTE";
 import Signup from "./Signup";
 import Login from "./Login";
@@ -14,7 +14,7 @@ import Select from "./Select";
 import  Button  from "./Button";
 
 
-export { HeaderWithHamburger,
+export { Header,
          Footer,
          Container,
           Logo,

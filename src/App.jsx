@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import authservice from "../Appwrite/auth";
 import { login, logout } from "../store/authSlice";
-import { HeaderWithHamburger, Footer } from "./components/export";
+import { Header, Footer } from "./components/export";
 import { Outlet } from "react-router-dom";
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
         </div>
       ) : (
         <>
-          <HeaderWithHamburger />
+          <Header />
           <main className="flex-grow container mx-auto px-6 py-8">
             <Outlet />
           </main>

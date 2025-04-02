@@ -57,11 +57,7 @@ export default function PostForm({ post }) {
 
     const slugTransform = useCallback((value) => {
         if (value && typeof value === "string") {
-            return value
-                .trim()
-                .toLowerCase()
-                .replace(/[^a-zA-Z\d\s]+/g, "-")
-                .replace(/\s/g, "-");
+            return value.trim().toLowerCase().replace(/[^a-zA-Z\d\s]+/g, "-").replace(/\s/g, "-");
         }
         return "";
     }, []);
@@ -79,119 +75,88 @@ export default function PostForm({ post }) {
     return (
         <form
             onSubmit={handleSubmit(submit)}
-            className="flex flex-wrap bg-gradient-to-br from-indigo-900  to-gray-900 p-8 rounded-lg shadow-lg"
+            className="flex flex-col lg:flex-row bg-gradient-to-br from-indigo-900 to-gray-900 p-6 md:p-8 rounded-lg shadow-lg"
         >
             {/* Left Section */}
-            <div className="w-2/3 px-4">
+            <div className="w-full lg:w-2/3 px-2 md:px-4">
                 {/* Title Input */}
-                <div className="relative mb-6">
+                <div className="mb-4">
                     <input
                         type="text"
                         id="title"
                         placeholder="Enter the title"
-                        className="peer w-full bg-gray-800 text-gray-300 border border-gray-600 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none hover:border-indigo-400 transition duration-300"
+                        className="w-full bg-gray-800 text-gray-300 border border-gray-600 rounded-lg px-4 py-2 md:py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none hover:border-indigo-400 transition duration-300"
                         {...register("title", { required: true })}
                     />
-                    <label
-                        htmlFor="title"
-                        className="absolute left-4 top-3 text-gray-400 text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base peer-focus:top-3 peer-focus:text-sm peer-focus:text-indigo-500"
-                    >
-                    
-                    </label>
                 </div>
 
                 {/* Slug Input */}
-                <div className="relative mb-6">
+                <div className="mb-4">
                     <input
                         type="text"
                         id="slug"
                         placeholder="Generated slug"
-                        className="peer w-full bg-gray-800 text-gray-300 border border-gray-600 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none hover:border-indigo-400 transition duration-300"
+                        className="w-full bg-gray-800 text-gray-300 border border-gray-600 rounded-lg px-4 py-2 md:py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none hover:border-indigo-400 transition duration-300"
                         {...register("slug", { required: true })}
-                        onInput={(e) => {
-                            setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
-                        }}
                     />
-                    <label
-                        htmlFor="slug"
-                        className="absolute left-4 top-3 text-gray-400 text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base peer-focus:top-3 peer-focus:text-sm peer-focus:text-indigo-500"
-                    >
-                    
-                    </label>
                 </div>
 
-              {/* Rich Text Editor */}
-<div className="relative mb-6 bg-gray-800 text-gray-300 border border-gray-600 rounded-lg focus-within:ring-2 focus-within:ring-indigo-500">
-    <RTE
-        label="Content"
-        name="content"
-        control={control}
-        defaultValue={getValues("content")}
-        className="bg-gray-800 text-gray-300 border-none focus:outline-none focus:ring-0"
-    />
-</div>
-</div>
+                {/* Rich Text Editor */}
+                <div className="mb-4">
+                    <RTE
+                        label="Content"
+                        name="content"
+                        control={control}
+                        defaultValue={getValues("content")}
+                        className="bg-gray-800 text-gray-300 border-none focus:outline-none focus:ring-0"
+                    />
+                </div>
+            </div>
 
             {/* Right Section */}
-            <div className="w-1/3 px-4">
+            <div className="w-full lg:w-1/3 px-2 md:px-4">
                 {/* Featured Image Input */}
-                <div className="relative mb-6">
+                <div className="mb-4">
                     <input
                         type="file"
                         id="image"
-                        placeholder="Upload featured image"
-                        className="peer w-full bg-gray-800 text-gray-300 border border-gray-600 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none hover:border-indigo-400 transition duration-300"
+                        className="w-full bg-gray-800 text-gray-300 border border-gray-600 rounded-lg px-4 py-2 md:py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none hover:border-indigo-400 transition duration-300"
                         accept="image/png, image/jpg, image/jpeg, image/gif"
                         {...register("image", { required: !post })}
                     />
-                    <label
-                        htmlFor="image"
-                        className="absolute left-4 top-3 text-gray-400 text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base peer-focus:top-3 peer-focus:text-sm peer-focus:text-indigo-500"
-                    >
-                      
-                    </label>
                 </div>
 
                 {/* Image Preview */}
                 {post && (
-                    <div className="w-full mb-6">
+                    <div className="w-full mb-4">
                         <img
                             src={appwriteService.getFilePreview(post.featuredImage)}
                             alt={post.title}
-                            className="rounded-lg shadow-md"
+                            className="rounded-lg shadow-md w-full"
                         />
                     </div>
                 )}
 
                 {/* Status Select */}
-<div className="relative mb-6">
-    <label
-        htmlFor="status"
-        className="block mb-2 text-sm font-medium text-gray-400"
-    >
-        Status
-    </label>
-    <select
-        id="status"
-        className="w-full bg-gray-800 text-gray-300 border border-gray-600 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none hover:border-indigo-400 transition duration-300"
-        {...register("status", { required: true })}
-    >
-        <option value="active" className="bg-gray-800 text-gray-300">
-            Active
-        </option>
-        <option value="inactive" className="bg-gray-800 text-gray-300">
-            Inactive
-        </option>
-    </select>
-</div>
+                <div className="mb-4">
+                    <label htmlFor="status" className="block mb-2 text-sm font-medium text-gray-400">
+                        Status
+                    </label>
+                    <select
+                        id="status"
+                        className="w-full bg-gray-800 text-gray-300 border border-gray-600 rounded-lg px-4 py-2 md:py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none hover:border-indigo-400 transition duration-300"
+                        {...register("status", { required: true })}
+                    >
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
 
                 {/* Submit Button */}
                 <Button
                     type="submit"
                     bgColor={post ? "bg-green-500" : "bg-indigo-500"}
-                    className="w-full py-3 
-                    cursor-pointer
-                    text-sm font-medium text-gray-100 rounded-lg hover:bg-indigo-700 transition duration-300"
+                    className="w-full py-3 text-sm font-medium text-gray-100 rounded-lg hover:bg-indigo-700 transition duration-300"
                 >
                     {post ? "Update Post" : "Create Post"}
                 </Button>

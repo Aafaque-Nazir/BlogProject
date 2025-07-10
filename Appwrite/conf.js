@@ -1,5 +1,7 @@
 import config from '../config/config.js';
 import { Client, ID, Databases, Storage, Query } from "appwrite";
+import { Permission, Role } from "appwrite";
+
 
 export class Service{
     client = new Client();
@@ -19,6 +21,7 @@ export class Service{
             return await this.databases.createDocument(
                 config.appwriteDatabaseId,
                 config.appwriteCollectionId,
+                ID.unique(),
                 slug,
                 {
                     title,
@@ -99,19 +102,23 @@ export class Service{
 
     // file upload service
 
-    async uploadFile(file){
+     async uploadFile(file) {
         try {
             return await this.storage.createFile(
                 config.appwriteStorageId,
                 ID.unique(),
-                file
-            )
+                file,
+                [Permission.read(Role.any())] // ✅ latest Appwrite permission style
+            );
         } catch (error) {
             console.log("Appwrite serive :: uploadFile :: error", error);
-            return false
+            return false;
         }
     }
 
+    getFilePreview(fileId) {
+        return this.storage.getFilePreview(config.appwriteStorageId, fileId);
+    }
     async deleteFile(fileId){
         try {
             await this.storage.deleteFile(
@@ -123,13 +130,6 @@ export class Service{
             console.log("Appwrite serive :: deleteFile :: error", error);
             return false
         }
-    }
-
-    getFilePreview(fileId){
-        return this.storage.getFilePreview(
-            config.appwriteStorageId,
-            fileId
-        )
     }
 }
 

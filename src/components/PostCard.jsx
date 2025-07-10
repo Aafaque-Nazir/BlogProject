@@ -7,6 +7,9 @@ function PostCard({
     title,
     featuredImage,
 }) {
+  console.log("Featured Image ID:", featuredImage);
+console.log("Generated URL:", appwriteService.getFilePreview(featuredImage));
+
   return (
 
 <Link to={`/post/${$id}`}>

@@ -46,8 +46,6 @@ export class AuthService {
         }
 
     }
-
-
     async logout() {
 
         try {
@@ -57,6 +55,5 @@ export class AuthService {
         }
     }
 }
-
 const authService = new AuthService();
 export default authService

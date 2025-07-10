@@ -21,15 +21,9 @@ function AllPosts() {
                         <h1 className="text-2xl sm:text-4xl font-bold text-indigo-400 mb-4">
                             No Posts Available
                         </h1>
-                        <p className="text-lg text-gray-400 mb-6 text-center">
-                            It seems there are no posts to display right now. Check back later!
+                        <p className="text-lg sm:text-xl text-gray-400 mb-6">
+                            It seems there are no posts available at the moment. Please check back later.
                         </p>
-                        <button
-                            onClick={() => window.location.reload()}
-                            className="px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm font-medium text-gray-100 bg-indigo-500 rounded-full hover:bg-indigo-700 transition duration-300"
-                        >
-                            Refresh
-                        </button>
                     </div>
                 </Container>
             </div>

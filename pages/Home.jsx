@@ -21,7 +21,7 @@ function Home() {
                 <Container>
                     <div className="flex flex-col items-center justify-center px-4">
                         <h1 className="text-xl sm:text-2xl font-bold hover:text-gray-500 transition">
-                            Login to read posts
+                            No Post Available
                         </h1>
                     </div>
                 </Container>
@@ -32,6 +32,7 @@ function Home() {
     return (
         <div className='w-full py-8'>
             <Container>
+                <h1 className='mx-auto text-3xl font-bold my-6 '>Image Preview Not Available!</h1>
                 <div className='flex flex-wrap justify-center'>
                     {posts.map((post) => (
                         <div key={post.$id} className='p-2 w-full sm:w-1/2 md:w-1/3 lg:w-1/4'>
